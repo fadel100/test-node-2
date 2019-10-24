@@ -79,11 +79,3 @@ export const removeOne = async (req, res) => {
     res.status(400).end();
   }
 };
-
-export const controllers = () => ({
-  removeOne: removeOne(),
-  updateOne: updateOne(),
-  getMany: getMany(),
-  getOne: getOne(),
-  createOne: createOne()
-});

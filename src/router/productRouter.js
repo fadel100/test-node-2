@@ -6,8 +6,11 @@ import {
   updateOne,
   removeOne
 } from "../controllers/productController";
+import { auth } from "../middleware/auth";
 
 const router = Router();
+
+router.use(auth);
 
 // /api/product
 router
