@@ -13,9 +13,17 @@ const shopSchema = new mongoose.Schema(
       type: mongoose.SchemaTypes.ObjectId,
       ref: "owner",
       required: true
-    }
+    },
+    products: [
+      {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "product"
+      }
+    ]
   },
   { timestamps: true }
 );
+
+productSchema.index({ ownerID: 1, name: 1 }, { unique: true });
 
 export const Shop = mongoose.model("shop", shopSchema);

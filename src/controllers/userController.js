@@ -1,8 +1,10 @@
+// in this module: the sign up controller where i validate the payload , save it to the db and send back a token
 import bcrypt from "bcrypt";
 import _ from "lodash";
 import { User, validateUser } from "../model/userModel";
 
 export const getUser = async (req, res) => {
+  // i receive req.user._id because i applied the auth middleware on this route
   const user = await User.findById(req.user._id).select("-password");
   res.send(user);
 };

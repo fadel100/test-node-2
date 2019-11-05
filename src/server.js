@@ -7,11 +7,7 @@ import categoryRouter from "./router/categoryRouter";
 import userRouter from "./router/userRouter";
 import authRouter from "./router/authRouter";
 import { connect } from "./db";
-// import config from "config";
-// if (!config.get("jwtPrivateKey")) {
-//   console.error("fatal crash no jwtPrivateKey setup");
-//   process.exit(1);
-// }
+
 export const app = express();
 
 app.disable("x-powered-by");
@@ -28,7 +24,9 @@ app.use("/api/auth", authRouter);
 
 export const start = async () => {
   try {
+    // connect to the database
     await connect();
+    // start the server
     app.listen(3002, () => {
       console.log(`REST API on http://localhost:3002`);
     });

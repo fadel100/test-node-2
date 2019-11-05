@@ -1,4 +1,6 @@
-//this authorization not authentication
+//this is authorization not authentication
+// i add this middleware to the routes which should be accessed by an authenticated user only
+
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config();

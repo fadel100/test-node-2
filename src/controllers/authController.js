@@ -1,3 +1,4 @@
+// in this module: the sign in controller where i validate the sign in and send a new token
 import Joi from "joi";
 import bcrypt from "bcrypt";
 import _ from "lodash";

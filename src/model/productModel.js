@@ -21,7 +21,11 @@ const productSchema = new mongoose.Schema(
     salesWeek: Number,
     salesMonth: Number,
     url: String,
-    shopId: Number,
+    shopId: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "shop",
+      required: true
+    },
     categoryId: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: "category",
@@ -32,5 +36,6 @@ const productSchema = new mongoose.Schema(
 );
 
 productSchema.index({ categoryId: 1, name: 1 }, { unique: true });
+productSchema.index({ shopId: 1, name: 1 }, { unique: true });
 
 export const Product = mongoose.model("product", productSchema);

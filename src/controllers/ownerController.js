@@ -1,8 +1,8 @@
-import { Product } from "../model/productModel";
+import { Owner } from "../model/ownerModel";
 
 export const getOne = async (req, res) => {
   try {
-    const doc = await Product.findOne({ _id: req.params.id })
+    const doc = await Owner.findOne({ _id: req.params.id })
       .lean()
       .exec();
 
@@ -19,7 +19,7 @@ export const getOne = async (req, res) => {
 
 export const getMany = async (req, res) => {
   try {
-    const docs = await Product.find()
+    const docs = await Owner.find()
       .populate("categoryId")
       .lean()
       .exec();
@@ -33,7 +33,7 @@ export const getMany = async (req, res) => {
 
 export const createOne = async (req, res) => {
   try {
-    const doc = await Product.create({ ...req.body });
+    const doc = await Owner.create({ ...req.body });
     res.status(201).json({ data: doc });
   } catch (e) {
     console.error(e);
@@ -43,7 +43,7 @@ export const createOne = async (req, res) => {
 
 export const updateOne = async (req, res) => {
   try {
-    const updatedDoc = await Product.findOneAndUpdate(
+    const updatedDoc = await Owner.findOneAndUpdate(
       {
         _id: req.params.id
       },
@@ -66,7 +66,7 @@ export const updateOne = async (req, res) => {
 
 export const removeOne = async (req, res) => {
   try {
-    const removed = await Product.findOneAndRemove({
+    const removed = await Owner.findOneAndRemove({
       _id: req.params.id
     });
 
